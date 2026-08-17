@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacto — Follaje</title>
+<meta name="description" content="Escríbenos a Follaje: pedidos, dudas de cuidado o visitas a la tienda.">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand">
+      <svg class="brand-mark" viewBox="0 0 24 24" fill="none">
+        <path d="M12 21V11" stroke="#22301C" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M12 11C12 6 7 5 4 5C4 9 6 12 12 11Z" fill="#BD8A2E"/>
+        <path d="M12 15C12 11 17 10 20 10C20 14 18 17 12 15Z" fill="#4C5A40"/>
+      </svg>
+      Follaje
+    </a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="nav-toggle-label" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </label>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="plantas.html">Plantas</a></li>
+      <li><a href="contacto.html" aria-current="page">Contacto</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" style="padding-bottom:0.5rem;">
+    <div class="container">
+      <span class="eyebrow">Contacto</span>
+      <h1>¿Dudas sobre una planta o tu pedido?</h1>
+      <p>Cuéntanos qué necesitas y te respondemos en menos de un día.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <form class="form-card" action="#" method="post">
+
+        <div class="field">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Ej. Daniela Ríos" required>
+        </div>
+
+        <div class="field">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
+        </div>
+
+        <div class="field">
+          <label for="telefono">Teléfono (opcional)</label>
+          <input type="tel" id="telefono" name="telefono" placeholder="300 000 0000" pattern="[0-9 ]{7,15}">
+        </div>
+
+        <div class="field">
+          <label for="motivo">Motivo de tu mensaje</label>
+          <select id="motivo" name="motivo" required>
+            <option value="" selected disabled>Selecciona una opción</option>
+            <option value="pedido">Estado de un pedido</option>
+            <option value="cuidado">Consulta de cuidado de una planta</option>
+            <option value="visita">Agendar visita a la tienda</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" placeholder="Escribe aquí los detalles..." required></textarea>
+          <p class="hint">Si es sobre el cuidado de una planta, cuéntanos qué síntomas notas (hojas amarillas, caída, manchas, etc.).</p>
+        </div>
+
+        <div class="field checkbox-row">
+          <input type="checkbox" id="newsletter" name="newsletter">
+          <label for="newsletter">Quiero recibir tips de cuidado de plantas por correo una vez al mes.</label>
+        </div>
+
+        <button type="submit" class="btn">Enviar mensaje</button>
+      </form>
+
+      <div class="contact-info">
+        <h3>Otras formas de escribirnos</h3>
+        <p>Correo: hola@follaje.co</p>
+        <p>WhatsApp: 300 000 0000</p>
+        <p>Tienda física: Medellín, Antioquia — martes a sábado, 10 a.m. a 6 p.m.</p>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>Follaje · Medellín, Colombia</p>
+    <p>Proyecto académico — Programación de Software, Grado 10°</p>
+  </div>
+</footer>
+
+</body>
+</html>

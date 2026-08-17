@@ -1,0 +1,406 @@
+/* =========================================================
+   FOLLAJE — hoja de estilos
+   Enfoque: Mobile-first. Las reglas base son para celular;
+   las @media queries ajustan tablet y escritorio.
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,500&family=Karla:wght@400;500;700&display=swap');
+
+:root{
+  /* Paleta */
+  --bg:        #EEF1E6; /* papel salvia claro */
+  --bg-alt:    #E2E7D3; /* panel salvia un poco más oscuro */
+  --ink:       #22301C; /* verde musgo casi negro, texto principal */
+  --ink-soft:  #4C5A40; /* verde musgo suave, texto secundario */
+  --accent:    #BD8A2E; /* mostaza/ocre, para acentos y enlaces */
+  --accent-dk: #8C6720; /* mostaza oscuro, hover */
+  --clay:      #8A4B37; /* terracota apagado, solo para "nivel de cuidado" */
+  --line:      #C7CDB2; /* líneas divisorias */
+  --white:     #FBFBF6;
+
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Karla', sans-serif;
+
+  --radius: 14px;
+  --maxw: 1180px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
+
+*, *::before, *::after{ box-sizing: border-box; }
+
+html{ scroll-behavior: smooth; }
+
+body{
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg{ max-width: 100%; display: block; }
+
+a{ color: var(--accent-dk); }
+
+h1, h2, h3{
+  font-family: var(--font-display);
+  color: var(--ink);
+  margin: 0 0 0.5em 0;
+  line-height: 1.15;
+}
+
+p{ margin: 0 0 1em 0; color: var(--ink-soft); }
+
+.container{
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* -------------------- Header / navegación -------------------- */
+
+.site-header{
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.nav{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.25rem;
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+
+.brand{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.brand-mark{ width: 28px; height: 28px; flex: none; }
+
+/* truco de menú móvil: checkbox oculto + label como botón */
+.nav-toggle{ display: none; }
+
+.nav-toggle-label{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 30px;
+  cursor: pointer;
+}
+.nav-toggle-label span{
+  display: block;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+}
+
+.nav-links{
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.nav-toggle:checked ~ .nav-links{
+  max-height: 300px;
+}
+
+.nav-links a{
+  display: block;
+  padding: 0.9rem 1.25rem;
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 500;
+  border-top: 1px solid var(--line);
+}
+
+.nav-links a[aria-current="page"]{
+  color: var(--accent-dk);
+  font-weight: 700;
+}
+
+/* -------------------- Hero -------------------- */
+
+.hero{
+  padding: 2.5rem 0 2rem;
+}
+
+.hero .container{
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.eyebrow{
+  display: inline-block;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-dk);
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.hero h1{
+  font-size: 2.1rem;
+}
+
+.hero-illustration{
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+/* dibujo de la planta creciendo */
+.grow-leaf{
+  transform-origin: bottom center;
+  animation: grow 900ms ease-out both;
+}
+.grow-leaf:nth-child(2){ animation-delay: 120ms; }
+.grow-leaf:nth-child(3){ animation-delay: 260ms; }
+.grow-leaf:nth-child(4){ animation-delay: 400ms; }
+
+@keyframes grow{
+  from{ transform: scaleY(0); opacity: 0; }
+  to{ transform: scaleY(1); opacity: 1; }
+}
+
+/* -------------------- Botones -------------------- */
+
+.btn{
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.btn:hover{ background: var(--accent-dk); transform: translateY(-1px); }
+
+.btn-ghost{
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--ink);
+}
+.btn-ghost:hover{ background: var(--ink); color: var(--white); }
+
+/* -------------------- Secciones genéricas -------------------- */
+
+section{ padding: 2rem 0; }
+
+.section-alt{ background: var(--bg-alt); }
+
+.section-head{
+  max-width: 46ch;
+  margin-bottom: 1.5rem;
+}
+
+/* -------------------- Tarjetas de plantas -------------------- */
+
+.plant-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.plant-card{
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.plant-card .pot-icon{ width: 56px; height: 56px; margin-bottom: 0.4rem; }
+
+.plant-card h3{ font-size: 1.15rem; margin-bottom: 0.15rem; }
+
+.price{
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--accent-dk);
+  font-size: 1.05rem;
+}
+
+/* Medidor de cuidado: hojitas rellenas según nivel (1-3) */
+.care-row{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.leaf-meter{ display: flex; gap: 3px; }
+.leaf-meter svg{ width: 14px; height: 14px; }
+.leaf-meter svg .fill{ fill: var(--clay); }
+.leaf-meter svg.empty .fill{ fill: none; stroke: var(--line); stroke-width: 1.5; }
+
+/* -------------------- Tarjetas destacadas (home) -------------------- */
+
+.feature-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.feature-card{
+  padding: 1.25rem;
+}
+
+.feature-card .num{
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--accent-dk);
+  font-size: 1.6rem;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+/* -------------------- Formulario de contacto -------------------- */
+
+.form-card{
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  max-width: 560px;
+}
+
+.field{
+  margin-bottom: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.field label{
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+.field .hint{
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+input, select, textarea{
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 0.7rem 0.85rem;
+  border: 1.5px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+input:focus, select:focus, textarea:focus{
+  outline: 3px solid var(--accent);
+  outline-offset: 1px;
+  border-color: var(--accent);
+}
+
+textarea{ resize: vertical; min-height: 110px; }
+
+.checkbox-row{
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+.checkbox-row input{ width: 18px; height: 18px; margin-top: 0.15rem; }
+.checkbox-row label{ font-weight: 500; }
+
+.contact-info{
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+/* -------------------- Footer -------------------- */
+
+.site-footer{
+  background: var(--ink);
+  color: var(--bg);
+  padding: 2rem 0;
+  margin-top: 2rem;
+}
+.site-footer a{ color: var(--bg); }
+.site-footer p{ color: #C3CBB4; font-size: 0.85rem; }
+
+/* =========================================================
+   TABLET  (≥ 768px)
+   ========================================================= */
+@media (min-width: 768px){
+  .container{ padding: 0 2rem; }
+
+  .nav-toggle-label{ display: none; }
+
+  .nav-links{
+    position: static;
+    max-height: none;
+    overflow: visible;
+    flex-direction: row;
+    background: transparent;
+    border: none;
+  }
+  .nav-links a{ border-top: none; padding: 0.5rem 0 0.5rem 1.75rem; }
+
+  .hero .container{
+    flex-direction: row;
+    align-items: center;
+  }
+  .hero-copy{ flex: 1; }
+  .hero-illustration{ flex: 1; max-width: 380px; }
+
+  .hero h1{ font-size: 2.6rem; }
+
+  .plant-grid{ grid-template-columns: repeat(2, 1fr); }
+  .feature-grid{ grid-template-columns: repeat(3, 1fr); }
+}
+
+/* =========================================================
+   ESCRITORIO  (≥ 1024px)
+   ========================================================= */
+@media (min-width: 1024px){
+  .hero h1{ font-size: 3.1rem; }
+  .plant-grid{ grid-template-columns: repeat(3, 1fr); }
+}
